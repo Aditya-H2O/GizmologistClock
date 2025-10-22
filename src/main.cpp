@@ -66,8 +66,8 @@ void setup() {
 //  delay(20);
 
   // Calibrate the stepper motors
-
-
+ 
+  stepperLong.calibrateOne(longLowSwitch);
   stepperLat.calibrate(latLowSwitch, latHighSwitch);
   Serial.print(stepperLat._maxPosition);
 
