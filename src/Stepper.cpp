@@ -113,6 +113,20 @@ void Stepper::calibrateOne(int switchPin) {
     delay(1);
     _currentPosition--;
   }
+
+  for (int i = 0; i < 100; i++) {
+    moveUp();
+  }
+
+  while(!digitalRead(switchPin)) {
+    digitalWrite(_dirPin, LOW);
+    digitalWrite(_stepPin, HIGH);
+    delay(5);
+    digitalWrite(_stepPin, LOW);
+    delay(5);
+    _currentPosition--;
+  }
+
   this->setPos(0);
 
   this->moveTo(800);
